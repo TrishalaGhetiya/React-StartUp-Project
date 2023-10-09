@@ -6,6 +6,9 @@ import './ExpenseItem.css';
 
 
 const ExpenseItem = (props) => {
+    const clickHandler = () => {
+        console.log('clicked!!!');
+    }
     return (
         <Card className='expense-item'>
             <ExpenseDate date={props.date} />
@@ -14,6 +17,7 @@ const ExpenseItem = (props) => {
             locationOfExpenditure={props.locationOfExpenditure} 
             amount={props.amount} 
             />
+            <button onClick={clickHandler}>Delete</button>
         </Card> 
     );
 }
