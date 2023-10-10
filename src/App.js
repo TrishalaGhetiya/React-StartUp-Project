@@ -33,9 +33,14 @@ const App = () =>  {
     locationOfExpenditure: 'Surat'
   },
 ]
+const addExpenseHandler = expense => {
+  console.log(expense);
+  expenses.push(expense);
+}
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense = {addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
