@@ -2,21 +2,36 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  const[enteredTitle, setEnteredTitle] = useState('');
-  const[enteredAmount, setEnteredAmount] = useState('');
-  const[enteredDate, setEnteredDate] = useState('');
-  const titleChageHandler = event => {
-    setEnteredTitle(event.target.value);
-  }
+  //   const[enteredTitle, setEnteredTitle] = useState('');
+  //   const[enteredAmount, setEnteredAmount] = useState('');
+  //   const[enteredDate, setEnteredDate] = useState('');
+  const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    eneteredDate: "",
+  });
+  const titleChageHandler = (event) => {
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value,
+    // });
+    setUserInput((prevState) => {
+        return { ...prevState, enteredTitle: event.target.value };
+    })
+  };
 
-  const amountChangeHandler = event => {
-    setEnteredAmount(event.target.value);
-  }
+  const amountChangeHandler = (event) => {
+    setUserInput((prevState) => {
+        return { ...prevState, enteredAmount: event.target.value };
+    })
+  };
 
-  const dateChangeHandler = event => {
-    setEnteredDate(event.target.value);
-  }
-  
+  const dateChangeHandler = (event) => {
+    setUserInput((prevState) => {
+        return { ...prevState, eneteredDate: event.target.value };
+    })
+  };
+
   return (
     <form>
       <div className="new-Expense__controls">
@@ -26,11 +41,21 @@ const ExpenseForm = () => {
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
-          <input type="number" min="0.01" step="0.01" onChange={amountChangeHandler} />
+          <input
+            type="number"
+            min="0.01"
+            step="0.01"
+            onChange={amountChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
-          <input type="date" min="2019-01-01" max="2022-12-31" onChange={dateChangeHandler} />
+          <input
+            type="date"
+            min="2019-01-01"
+            max="2022-12-31"
+            onChange={dateChangeHandler}
+          />
         </div>
       </div>
       <div className="new-expense__actions">
